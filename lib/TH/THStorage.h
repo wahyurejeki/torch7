@@ -1,6 +1,8 @@
 #ifndef TH_STORAGE_INC
 #define TH_STORAGE_INC
 
+extern int THStorage_traceOn;
+
 #include "THGeneral.h"
 #include "THAllocator.h"
 

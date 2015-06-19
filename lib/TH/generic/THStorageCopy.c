@@ -1,16 +1,19 @@
 #ifndef TH_GENERIC_FILE
 #define TH_GENERIC_FILE "generic/THStorageCopy.c"
 #else
+#include <stdio.h>
 
 void THStorage_(rawCopy)(THStorage *storage, real *src)
 {
   long i;
+  if( THStorage_traceOn) printf("THStorage_(rawCopy)\n");
   for(i = 0; i < storage->size; i++)
     storage->data[i] = src[i];
 }
 
 void THStorage_(copy)(THStorage *storage, THStorage *src)
 {
+  if( THStorage_traceOn) printf("THStorage_(copy)\n");
   THArgCheck(storage->size == src->size, 2, "size mismatch");
   THStorage_(rawCopy)(storage, src->data);
 }

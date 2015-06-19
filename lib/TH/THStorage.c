@@ -6,3 +6,6 @@
 
 #include "generic/THStorageCopy.c"
 #include "THGenerateAllTypes.h"
+
+int THStorage_traceOn = 0;
+

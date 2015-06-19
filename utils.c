@@ -188,6 +188,13 @@ static int torch_getnumcores(lua_State *L)
   return 1;
 }
 
+static int torch_setstoragetrace(lua_State *L)
+{
+  int trace = luaL_checkint(L,1);
+  THStorage_traceOn = trace;
+  return 0;
+}
+
 static const struct luaL_Reg torch_utils__ [] = {
   {"getdefaulttensortype", torch_lua_getdefaulttensortype},
   {"isatty", torch_isatty},
@@ -209,6 +216,7 @@ static const struct luaL_Reg torch_utils__ [] = {
   {"pushudata", luaT_lua_pushudata},
   {"version", luaT_lua_version},
   {"pointer", luaT_lua_pointer},
+  {"setstoragetrace", torch_setstoragetrace},
   {NULL, NULL}
 };
 

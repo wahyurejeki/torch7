@@ -2,6 +2,8 @@
 #define TH_GENERIC_FILE "generic/THStorage.c"
 #else
 
+#include <stdio.h>
+
 real* THStorage_(data)(const THStorage *self)
 {
   return self->data;
@@ -31,6 +33,7 @@ THStorage* THStorage_(newWithAllocator)(long size,
                                         THAllocator *allocator,
                                         void *allocatorContext)
 {
+  if( THStorage_traceOn) printf("THStorage_(newWithAllocator)\n");
   THStorage *storage = THAlloc(sizeof(THStorage));
   storage->data = allocator->malloc(allocatorContext, sizeof(real)*size);
   storage->size = size;
@@ -136,6 +139,7 @@ THStorage* THStorage_(newWithData)(real *data, long size)
 THStorage* THStorage_(newWithDataAndAllocator)(real* data, long size,
                                                THAllocator* allocator,
                                                void* allocatorContext) {
+  if( THStorage_traceOn) printf("THStorage_(newWithDataAndAllocator)\n");
   THStorage *storage = THAlloc(sizeof(THStorage));
   storage->data = data;
   storage->size = size;

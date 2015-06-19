@@ -2,10 +2,13 @@
 #define TH_GENERIC_FILE "generic/Storage.c"
 #else
 
+#include <stdio.h>
+
 static int torch_Storage_(new)(lua_State *L)
 {
   int index = 1;
   THStorage *storage;
+  if( THStorage_traceOn) printf("torch_Storage_(new)\n");
   THAllocator *allocator = luaT_toudata(L, index, "torch.Allocator");
   if (allocator) index++;
 
@@ -91,6 +94,7 @@ static int torch_Storage_(retain)(lua_State *L)
 static int torch_Storage_(free)(lua_State *L)
 {
   THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+  if( THStorage_traceOn) printf("torch_Storage_(free)\n");
   THStorage_(free)(storage);
   return 0;
 }
@@ -98,6 +102,7 @@ static int torch_Storage_(free)(lua_State *L)
 static int torch_Storage_(resize)(lua_State *L)
 {
   THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+  if( THStorage_traceOn) printf("torch_Storage_(resize)\n");
   long size = luaL_checklong(L, 2);
 /*  int keepContent = luaT_optboolean(L, 3, 0); */
   THStorage_(resize)(storage, size);/*, keepContent); */
@@ -108,6 +113,7 @@ static int torch_Storage_(resize)(lua_State *L)
 static int torch_Storage_(copy)(lua_State *L)
 {
   THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+  if( THStorage_traceOn) printf("torch_Storage_(copy)\n");
   void *src;
   if( (src = luaT_toudata(L, 2, torch_Storage)) )
     THStorage_(copy)(storage, src);
@@ -134,6 +140,7 @@ static int torch_Storage_(copy)(lua_State *L)
 static int torch_Storage_(fill)(lua_State *L)
 {
   THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+  if( THStorage_traceOn) printf("torch_Storage_(fill)\n");
   double value = luaL_checknumber(L, 2);
   THStorage_(fill)(storage, (real)value);
   lua_settop(L, 1);
@@ -158,6 +165,7 @@ static int torch_Storage_(__newindex__)(lua_State *L)
   if(lua_isnumber(L, 2))
   {
     THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+    if( THStorage_traceOn) printf("torch_Storage_(__newindex__)\n");
     long index = luaL_checklong(L, 2) - 1;
     double number = luaL_checknumber(L, 3);
     THStorage_(set)(storage, index, (real)number);
@@ -174,6 +182,7 @@ static int torch_Storage_(__index__)(lua_State *L)
   if(lua_isnumber(L, 2))
   {
     THStorage *storage = luaT_checkudata(L, 1, torch_Storage);
+    if( THStorage_traceOn) printf("torch_Storage_(__index__)\n");
     long index = luaL_checklong(L, 2) - 1;
     lua_pushnumber(L, THStorage_(get)(storage, index));
     lua_pushboolean(L, 1);
