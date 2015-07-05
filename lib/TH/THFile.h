@@ -27,6 +27,7 @@ TH_API char THFile_readCharScalar(THFile *self);
 TH_API short THFile_readShortScalar(THFile *self);
 TH_API int THFile_readIntScalar(THFile *self);
 TH_API long THFile_readLongScalar(THFile *self);
+TH_API int64 THFile_readInt64Scalar(THFile *self);
 TH_API float THFile_readFloatScalar(THFile *self);
 TH_API double THFile_readDoubleScalar(THFile *self);
 
@@ -35,6 +36,7 @@ TH_API void THFile_writeCharScalar(THFile *self, char scalar);
 TH_API void THFile_writeShortScalar(THFile *self, short scalar);
 TH_API void THFile_writeIntScalar(THFile *self, int scalar);
 TH_API void THFile_writeLongScalar(THFile *self, long scalar);
+TH_API void THFile_writeInt64Scalar(THFile *self, int64 scalar);
 TH_API void THFile_writeFloatScalar(THFile *self, float scalar);
 TH_API void THFile_writeDoubleScalar(THFile *self, double scalar);
 
@@ -61,6 +63,7 @@ TH_API long THFile_readCharRaw(THFile *self, char *data, long n);
 TH_API long THFile_readShortRaw(THFile *self, short *data, long n);
 TH_API long THFile_readIntRaw(THFile *self, int *data, long n);
 TH_API long THFile_readLongRaw(THFile *self, long *data, long n);
+TH_API long THFile_readInt64Raw(THFile *self, int64 *data, int64 n);
 TH_API long THFile_readFloatRaw(THFile *self, float *data, long n);
 TH_API long THFile_readDoubleRaw(THFile *self, double *data, long n);
 TH_API long THFile_readStringRaw(THFile *self, const char *format, char **str_); /* you must deallocate str_ */
@@ -70,6 +73,7 @@ TH_API long THFile_writeCharRaw(THFile *self, char *data, long n);
 TH_API long THFile_writeShortRaw(THFile *self, short *data, long n);
 TH_API long THFile_writeIntRaw(THFile *self, int *data, long n);
 TH_API long THFile_writeLongRaw(THFile *self, long *data, long n);
+TH_API long THFile_writeInt64Raw(THFile *self, int64 *data, int64 n);
 TH_API long THFile_writeFloatRaw(THFile *self, float *data, long n);
 TH_API long THFile_writeDoubleRaw(THFile *self, double *data, long n);
 TH_API long THFile_writeStringRaw(THFile *self, const char *str, long size);

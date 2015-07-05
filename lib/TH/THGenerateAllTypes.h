@@ -58,6 +58,17 @@
 #undef Real
 #undef TH_REAL_IS_LONG
 
+//#define real int64
+//#define accreal int64
+//#define Real Int64
+//#define TH_REAL_IS_INT64
+//#line 1 TH_GENERIC_FILE
+//#include TH_GENERIC_FILE
+//#undef real
+//#undef accreal
+//#undef Real
+//#undef TH_REAL_IS_INT64
+
 #define real float
 #define accreal double
 #define Real Float
