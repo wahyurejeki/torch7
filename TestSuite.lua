@@ -28,4 +28,3 @@ function torch.TestSuite()
 
    return obj
 end
-
